@@ -1,0 +1,52 @@
+# cd
+alias ..='cd ..'
+
+# ls
+if [[ `uname` == "Darwin" ]] && ! test -n "$SSH_TTY"
+then 
+  alias ls='ls -FG' # OS X
+  export EDITOR='mate_wait'  # OS X
+elif [[ `uname` == "Linux" ]]
+then
+  alias ls='ls --color=auto' # Linux
+  export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rb=90' # Linux
+  export EDITOR='vi'  #Linux/Command line
+elif [[ `uname` == "Darwin" ]] && test -n "$SSH_TTY"
+then
+  alias ls='ls -FG' # OS X
+  export EDITOR='vi'
+fi
+
+alias l="ls -lAh"
+alias ll="ls -l"
+alias la='ls -A'
+
+# git
+# alias gl='git pull'
+# alias gp='git push'
+# alias gd='git diff'
+# alias gc='git commit'
+# alias gca='git commit -a'
+# alias gco='git checkout'
+# alias gb='git branch'
+# alias gs='git status'
+# alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
+
+# rails
+# alias sc='script/console'
+# alias ss='script/server'
+# alias sg='script/generate'
+# alias a='autotest -rails'
+# alias tlog='tail -f log/development.log'
+# alias scaffold='script/generate nifty_scaffold'
+# alias migrate='rake db:migrate db:test:clone'
+# alias rst='touch tmp/restart.txt'
+
+# commands starting with % for pasting from web
+alias %=' '
+
+# my commands
+alias mv='mv -i'
+alias m='less'
+alias df='df -h'
+alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"

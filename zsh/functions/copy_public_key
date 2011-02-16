@@ -1,0 +1,10 @@
+copy_public_key() {
+  REMOTE_HOST=$1
+  if [ -n "$REMOTE_HOST" ]
+  then
+    cat ~/.ssh/id_dsa.pub | ssh $REMOTE_HOST 'cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys'
+  else
+    echo "You must specify the remote host in the form user@host.domain as the only argument to this script."
+  fi
+}
+
